@@ -199,7 +199,7 @@ yearOfReleaseEntry.configure(state=DISABLED)
 starNameEntry.configure(state=DISABLED)
 
 
-mylabel2 = Label(mainWindow,text="DVD addition status .."  , font=('Helvetica', 15))
+mylabel2 = Label(mainWindow,text="                                  "  , font=('Helvetica', 15))
 mylabel2.grid(row= 2 , column =2)
 
 
@@ -286,7 +286,11 @@ def add_dvd_details():
 
 	print(YearOfRelease == "Year of Release of the DVD")
 	if Title == "" or Title == None or Title == "Title of the DVD" :
-		mylabel2.config(text = "Please provide a valid movie Title")
+		newWindow = Toplevel(mainWindow)
+		newWindow.geometry("500x500")
+		newWindow.title("Uploading Failed")
+		label1 = Label(newWindow,text="Please enter a Valid Movie Name "  , font=('Helvetica', 18, 'bold') , borderwidth = 15)
+		label1.grid(row= 0 , column =0)
 	else:
 		data["Title"] = Title
 
@@ -301,7 +305,12 @@ def add_dvd_details():
 
 		print(data)
 		addDVD(data)
-		mylabel2.config(text = "Data uploaded successfully...")
+		newWindow = Toplevel(mainWindow)
+		newWindow.geometry("500x500")
+		newWindow.title("Upload successful")
+		label1 = Label(newWindow,text="Added Successfully"  , font=('Helvetica', 18, 'bold') , borderwidth = 15)
+		label1.grid(row= 0 , column =0)
+		
 
 		titleEntry.delete(0, END)
 		titleEntry.insert(0, "Title of the DVD")
@@ -381,7 +390,7 @@ def search_details():
 	else:
 		
 		newWindow = Toplevel(mainWindow)
-		newWindow.geometry("1800x1000")
+		newWindow.geometry("500x500")
 		newWindow.title("Search Results")
 		label1 = Label(newWindow,text="No Results Found. Please Try Again"  , font=('Helvetica', 18, 'bold') , borderwidth = 15)
 		label1.grid(row= 0 , column =0)
