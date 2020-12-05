@@ -1,0 +1,6 @@
+{
+"l1" : "tkinter",
+"l2" : "mysql.connector",
+"l3" : "functools" ,
+"l4" : "pyautogui"
+}
