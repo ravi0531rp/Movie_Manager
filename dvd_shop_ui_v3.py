@@ -36,6 +36,14 @@ except mysql.connector.errors.DatabaseError:
 		""")  # need to execute only once
 	except mysql.connector.errors.ProgrammingError:
 		pass
+mydb = mysql.connector.connect(
+		host = config["host"], 
+		user = config["user"],
+		passwd = config["passwd"],
+		database = config["database"]
+		)
+
+my_cursor = mydb.cursor()
 
 def addDVD(data):  # data is a dictionary
 	print("Adding Data to Database")
