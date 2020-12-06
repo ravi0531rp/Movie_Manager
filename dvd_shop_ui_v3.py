@@ -16,10 +16,26 @@ try:
 	)
 
 	mycursor = mydb.cursor()
-
+	print("Created the database...")
 	mycursor.execute("CREATE DATABASE {0}".format(config["database"]))
 
-except mysql.connector.errors.DatabaseError:
+	print("Connecting to the Database......")
+	mydb = mysql.connector.connect(
+		host = config["host"], 
+		user = config["user"],
+		passwd = config["passwd"],
+		database = config["database"]
+		)
+
+	my_cursor = mydb.cursor()
+	try:
+		my_cursor.execute("""  
+		CREATE TABLE dvds (Title VARCHAR(255) , Star_name VARCHAR(255) , YearOfRelease INTEGER(10) , Genre VARCHAR(255) , user_id INTEGER AUTO_INCREMENT PRIMARY KEY)
+		""")  # need to execute only once
+	except mysql.connector.errors.ProgrammingError:
+		pass
+
+except : #mysql.connector.errors.DatabaseError
 	
 	print("Connecting to the Database......")
 	mydb = mysql.connector.connect(
@@ -36,6 +52,8 @@ except mysql.connector.errors.DatabaseError:
 		""")  # need to execute only once
 	except mysql.connector.errors.ProgrammingError:
 		pass
+
+
 mydb = mysql.connector.connect(
 		host = config["host"], 
 		user = config["user"],
