@@ -228,8 +228,11 @@ def update(name,field): # field is a dictionary
 # print(search("" , "Politics"))
 
 mainWindow = Tk()
+mainWindow.title("DVD shop v1.0")
+width, height = mainWindow.winfo_screenwidth(), mainWindow.winfo_screenheight()
 
-mainWindow.attributes('-fullscreen',True)
+mainWindow.geometry('%dx%d+0+0' % (width,height))
+#mainWindow.attributes('-fullscreen',True)
 mainWindow.iconbitmap('DVDs.ico')
 mylabel1 = Label(mainWindow,text=" Welcome to the DVD shop  "  , font=('Helvetica', 20, 'bold') , pady = 20)
 mylabel1.grid(row= 0 , column =2)
@@ -239,8 +242,8 @@ def exit_app():
 
 # Add Area Begins
 
-addButton = Button(mainWindow, text = "Exit" ,  fg = "blue" , bg = "white" , width = 20  ,command = exit_app)
-addButton.grid(row = 0, column = 4)
+exitButton = Button(mainWindow, text = "Exit" ,  fg = "blue" , bg = "white" , width = 5  ,command = exit_app)
+exitButton.grid(row = 0, column = 4)
 
 titleEntry = Entry(mainWindow, width = 50 , borderwidth = 5)
 genreEntry = Entry(mainWindow, width = 50 , borderwidth = 5)
@@ -478,7 +481,7 @@ def add_dvd_details():
 
 	
 
-addButton = Button(mainWindow, text = "Add DVD" ,  fg = "blue" , bg = "white" , width = 50 , command = add_dvd_details)  # state = DISABLED , padx = 50 , pady = 50
+addButton = Button(mainWindow, text = "Add DVD" ,  fg = "blue" , bg = "white" , width = 10 , command = add_dvd_details)  # state = DISABLED , padx = 50 , pady = 50
 addButton.grid(row = 1, column = 4)
 
 def search_details():
@@ -556,7 +559,7 @@ def search_details():
 	print(result)
 
 
-searchButton = Button(mainWindow, text = "Search" ,  fg = "blue" , bg = "white" , width = 50 , command = search_details)  # state = DISABLED , padx = 50 , pady = 50
+searchButton = Button(mainWindow, text = "Search" ,  fg = "blue" , bg = "white" , width = 10 , command = search_details)  # state = DISABLED , padx = 50 , pady = 50
 searchButton.grid(row = 4, column = 2)
 
 def delete_complete(name):
@@ -642,7 +645,7 @@ def delete_details():
 
 
 
-deleteButton = Button(mainWindow, text = "Delete" ,  fg = "blue" , bg = "white" , width = 50 , command = delete_details)  # state = DISABLED , padx = 50 , pady = 50
+deleteButton = Button(mainWindow, text = "Delete" ,  fg = "blue" , bg = "white" , width = 10 , command = delete_details)  # state = DISABLED , padx = 50 , pady = 50
 deleteButton.grid(row = 6, column = 1)
 
 
@@ -703,7 +706,7 @@ def updateInfo():
 		on_click_id9 = genreUp.bind('<Button-1>', on_click9)
 		on_click_id10 = yearOfReleaseUp.bind('<Button-1>', on_click10)
 		on_click_id11 = starNameUp.bind('<Button-1>', on_click11)
-deleteButton = Button(mainWindow, text = "Update" ,  fg = "blue" , bg = "white" , width = 50 , command = updateInfo)  # state = DISABLED , padx = 50 , pady = 50
-deleteButton.grid(row = 8, column = 4)
+updateButton = Button(mainWindow, text = "Update" ,  fg = "blue" , bg = "white" , width = 10 , command = updateInfo)  # state = DISABLED , padx = 50 , pady = 50
+updateButton.grid(row = 8, column = 4)
 
 mainWindow.mainloop()
